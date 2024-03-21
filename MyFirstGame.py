@@ -56,9 +56,9 @@ app.layout = html.Div(style={**body_style, **container_style}, children=[
 def generate_new_number():
     return randint(0, 3500)
 
-x = generate_new_number()  # Generate the initial random number
+x = generate_new_number()  
 
-# Callback to trigger 'Check' button on 'Enter' key press within input field
+
 @app.callback(
     Output('submit-val', 'n_clicks'),
     Input('guess', 'n_submit'),
@@ -69,7 +69,6 @@ def trigger_check_button(n_submit, user_input):
         return n_submit + 1
     return 0
 
-# Callbacks to handle other functionalities (e.g., checking the guess, starting a new game)
 @app.callback(
     Output('result', 'children'),
     Input('submit-val', 'n_clicks'),
@@ -81,7 +80,7 @@ def check_guess(submit_clicks, new_game_clicks, user_input):
 
     if 'new-game' in changed_id:
         global x
-        x = generate_new_number()  # Generate a new number for a new game
+        x = generate_new_number() 
         return ""
     elif 'submit-val' in changed_id:
         if submit_clicks > 0:
